@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
-import Item from './Item'
+import ItemController from './ItemController'
 
-function props(store) {
-  return {
-    items: Object.keys(store.items).map( k => store.items[k] )
-  }
-}
-
-class Items extends Component {
+export default class Items extends Component {
 
   renderItems() {
     return this.props.items.map((item) => {
-      return <Item key={item.id} {...item} />
+      return <ItemController key={item.id} item={item} />
     })
   }
 
@@ -27,5 +20,3 @@ class Items extends Component {
     )
   }
 }
-
-export default Items

@@ -1,33 +1,16 @@
-import React, { Component, PropTypes } from 'react'
-import { observer } from 'mobservable-react'
+import React, { Component } from 'react'
 
-class UploaderController extends Component {
+export default class Uploader extends Component {
 
-  static contextTypes = {
-    store: PropTypes.object.isRequired
-  };
-
-  render() {
-    const props = {
-      increment: () => { this.context.store.counter++ },
-      counter: this.context.store.counter,
-    }
-
-    return (
-      <Uploader {...props} />
-    )
+  onBeginUploadingFile() {
+    this.props.beginUploadingFile('/path/to/file')
   }
-}
-
-class Uploader extends Component {
 
   render() {
     return (
-      <div onClick={() => { this.props.increment() }}>
-        Uploader {this.props.counter}
+      <div onClick={() => { this.onBeginUploadingFile() }}>
+        Uploader status {this.props.status} {this.props.completion}
       </div>
     )
   }
 }
-
-export default observer(UploaderController)

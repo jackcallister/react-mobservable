@@ -1,11 +1,10 @@
-import { createStore, combineReducers } from 'redux'
+import { observable } from 'mobservable'
 
-import items from './reducers/items'
-import uploader from './reducers/uploader'
-
-const combindedReducers = combineReducers({
-  items: items,
-  uploader: uploader,
+export default observable({
+  uploader: {
+    status: 'EMPTY',
+    completion: 0,
+    path: ''
+  },
+  items: []
 })
-
-export default createStore(combindedReducers)
